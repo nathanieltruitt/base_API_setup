@@ -9,6 +9,8 @@ default: &default
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
+  username: <%= Rails.application.credentials.development[:user] %>
+  password: <%= Rails.application.credentials.development[:password] %>
 
 development:
   <<: *default
@@ -24,5 +26,3 @@ test:
 production:
   <<: *default
   database: BaseAPI_production
-  username: BaseAPI
-  password: <%= ENV['BASEAPI_DATABASE_PASSWORD'] %>
