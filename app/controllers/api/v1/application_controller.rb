@@ -38,8 +38,7 @@ class Api::V1::ApplicationController < ActionController::API
     count = remainder.size
     errors = remainder
 
-    render json: { message: "Missing required parameters: #{errors.to_silence}" }, status: :bad_request \
-    and return count.zero?
+    render json: { message: "Missing required parameters: #{errors.to_sentence}" }, status: :bad_request and return unless count.zero?
   end
 
   def render_error(errors:, status: :internal_server_error)
